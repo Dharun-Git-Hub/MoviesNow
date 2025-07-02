@@ -1,0 +1,90 @@
+const WebSocket = require('ws')
+const { v4: uuid } = require('uuid')
+const PORT = 8001
+
+const clients = new Map() 
+const namedClients = new Map()
+
+const wss = new WebSocket.Server({port:PORT})
+
+const fetchAllClients = () => {
+    const users = Array.from(clients.values())
+    const namelist = users.map((id) => ({ id, name: namedClients.get(id) || null}))
+    for(let client of clients.keys())
+        client.send(JSON.stringify({type: "users_list", list: namelist}))
+}
+
+wss.on('connection', (ws) => {
+    const userId = uuid();
+    ws.send(JSON.stringify({type: "your_id", id: userId}))
+    clients.set(ws, userId);
+    fetchAllClients();
+    ws.on('message',(message) => {
+        let data;
+        try {
+            data = JSON.parse(message);
+        } catch (e) {
+            ws.send(JSON.stringify({type: "Type-Error", message: "Please give JSON Data"}))
+            return;
+        }
+        const msg = data.message;
+        if(data.type === 'public'){
+            const fromId = clients.get(ws);
+            const fromName = namedClients.get(fromId) || null;
+            for(let [client, id] of clients.entries()){
+                if(id !== fromId)
+                    client.send(JSON.stringify({type: "public_message", from: fromId, fromName, message: msg}))
+            }
+        }
+        else if(data.type === 'private'){
+            const toId = data.toId;
+            const fromId = clients.get(ws);
+            const fromName = namedClients.get(fromId) || null;
+            for(let [client,id] of clients.entries()){
+                if(id === toId)
+                    client.send(JSON.stringify({type: "private_message", from: fromId, fromName, message: msg, unread: 1}))
+            }
+        }
+        else if(data.type === 'private_image'){
+            const toId = data.toId;
+            const fromId = clients.get(ws);
+            const fromName = namedClients.get(fromId) || null;
+            for(let [client,id] of clients.entries()){
+                if(id === toId)
+                    client.send(JSON.stringify({
+                        type: "private_image",
+                        from: fromId,
+                        fromName,
+                        image: data.image
+                    }))
+            }
+        }
+        else if(data.type === 'exiting'){
+            const exitingId = data.id;
+            for(let [client, clientId] of clients.entries()){
+                if(clientId === exitingId)
+                    client.send(JSON.stringify({type: "exit-permitted"}))
+            }
+        }
+        else if(data.type === 'My_Name'){
+            const name = data.name;
+            const userId = clients.get(ws);
+            for(let [id,named] of namedClients.entries()){
+                if(name === named)
+                    ws.send(JSON.stringify({type: "Duplicate", message: "User Already Exists"}))
+            }
+            namedClients.set(userId, name);
+            fetchAllClients();
+        }
+        else
+            console.log(`Unknown Message Type: ${data.type}`)
+    })
+    ws.on('close',()=>{
+        const userId = clients.get(ws);
+        clients.delete(ws)
+        namedClients.delete(userId)
+        fetchAllClients()
+    })
+})
+
+console.log(`WebSocket server Running on ws://localhost:${PORT}`);

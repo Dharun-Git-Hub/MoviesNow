@@ -1,0 +1,16 @@
+// Bugs
+
+Login Page to Home State Reload Bug (Redux)
+Add Image Login to Signup
+Back Button (Frontend)
+Create Theatres with Available Movies only (Backend)   - Cleared
+Adding Movies with Multiple Theatre Release Option (Backend)
+Update Theatre Form (Backend)
+
+// To-Do
+
+Booking Page using WebSocket Theatre Room
+Tickets Database Design
+Admin Dashboard Design
+User Profile Page
+JWT Integration and Use Cryptors (Final)

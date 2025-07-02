@@ -1,0 +1,320 @@
+[{
+  "name": "PVR Forum Mall",
+  "location": {
+    "address": "123 Main St.",
+    "city": "Bengaluru",
+    "state": "Karnataka"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 150,
+      "currently_showing": {
+        "movie_name": "Spider-Man No Way Home",
+        "price": 400,
+        "showtimes": [
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 100,
+      "currently_showing": {
+        "movie_name": "The Power of the Dog",
+        "price": 350,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "PVR Inorbit Mall",
+  "location": {
+    "address": "456 Main St.",
+    "city": "Hyderabad",
+    "state": "Telangana"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 200,
+      "currently_showing": {
+        "movie_name": "In the Heights",
+        "price": 370,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 140,
+      "currently_showing": {
+        "movie_name": "The Power of the Dog",
+        "price": 390,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "INOX BMC Bhawani",
+  "location": {
+    "address": "ABC Main St.",
+    "city": "Bhubaneshwar",
+    "state": "Odisha"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 120,
+      "currently_showing": {
+        "movie_name": "Spider-Man No Way Home",
+        "price": 400,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 100,
+      "currently_showing": {
+        "movie_name": "Loki",
+        "price": 500,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "Cinepolis Fun Republic",
+  "location": {
+    "address": "XYZ Main St.",
+    "city": "Mumbai",
+    "state": "Maharastra"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 140,
+      "currently_showing": {
+        "movie_name": "A Quiet Place",
+        "price": 310,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 140,
+      "currently_showing": {
+        "movie_name": "CODA",
+        "price": 320,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "Sathyam Cinemas",
+  "location": {
+    "address": "897 Main St.",
+    "city": "Chennai",
+    "state": "Tamilnadu"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 170,
+      "currently_showing": {
+        "movie_name": "CODA",
+        "price": 300,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 150,
+      "currently_showing": {
+        "movie_name": "The Dark Knight",
+        "price": 340,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "PVR Phoenix Market",
+  "location": {
+    "address": "VRH Main St.",
+    "city": "Pune",
+    "state": "Maharastra"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 110,
+      "currently_showing": {
+        "movie_name": "Inception",
+        "price": 270,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 80,
+      "currently_showing": {
+        "movie_name": "Pirates of the Caribbean",
+        "price": 350,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "Escape Cinemas",
+  "location": {
+    "address": "YRL Main St.",
+    "city": "Chennai",
+    "state": "Tamilnadu"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 110,
+      "currently_showing": {
+        "movie_name": "John Wick",
+        "price": 410,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 110,
+      "currently_showing": {
+        "movie_name": "Pirates of the Caribbean",
+        "price": 390,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "Luxe Cinemas",
+  "location": {
+    "address": "582 Main St.",
+    "city": "New Delhi",
+    "state": "Delhi"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 250,
+      "currently_showing": {
+        "movie_name": "Loki",
+        "price": 500,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 200,
+      "currently_showing": {
+        "movie_name": "Inception",
+        "price": 300,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "Aries Plex Cinemas",
+  "location": {
+    "address": "LRS Main St.",
+    "city": "Calicut",
+    "state": "West Bengal"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 90,
+      "currently_showing": {
+        "movie_name": "John Wick",
+        "price": 380,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 80,
+      "currently_showing": {
+        "movie_name": "The Power of the Dog",
+        "price": 350,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+},
+{
+  "name": "Sunset Drive-In Cinemas",
+  "location": {
+    "address": "89A Main St.",
+    "city": "Varkala",
+    "state": "Kerala"
+  },
+  "screens": [
+    {
+      "screen_number": 1,
+      "seating_capacity": 100,
+      "currently_showing": {
+        "movie_name": "Spider-Man No Way Home",
+        "price": 400,
+        "showtimes": [
+          
+        ]
+      }
+    },
+    {
+      "screen_number": 2,
+      "seating_capacity": 100,
+      "currently_showing": {
+        "movie_name": "A Quiet Place",
+        "price": 340,
+        "showtimes": [
+          
+        ]
+      }
+    }
+  ]
+}
+]

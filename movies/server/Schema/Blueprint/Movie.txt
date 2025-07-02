@@ -1,0 +1,80 @@
+{
+    "title": "Spider-Man No Way Home",
+    "language": "English",
+    "description": "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear.",
+    "duration": "2h 28m",
+    "poster_url": "https://www.imdb.com/title/tt10872600/mediaviewer/rm2798542593/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi2247868185/1434659607842-pgv4ql-1571359201299.mp4?Expires=1750824395&Signature=gdiRH0NrzKu67JFytGwRQ6e9OmlVDTIIRHg-6xejD4L4Joog2KWiu4Ejgijj7Y-6zLiAQBUZCcVElx3X1aqH~Zw2qTLBowpFCygONgXy3w8NcNzmMxOVb7xLShgkQjhOLaqhOsLgy~8BTklMP~tAqJ9xXvWwXPfI--VCLmXaU9O52IYXJpZmEd8BijzgHwkadDCj7WaKmmXZGUZ9cvlbqEM42lAJovgMc5QFoeKr2TjhGXgI-GbiRQJFs~WfDrHjzoYv~O24Xh~UmTl5gox7AhO~gkBq9SruEBW9u33KXl6S8ZzhJoH~dNUq3wZtgFAWUMTxs0h3qgvCPyqwTRFI~w__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "In the Heights",
+    "language" "English",
+    "description": "In Washington Heights, a sympathetic New York bodega owner saves every penny every day as he imagines and sings about a better life.",
+    "duration": "2h 23m",
+    "poster_url": "https://www.imdb.com/title/tt1321510/mediaviewer/rm3639329025/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi1743306777/1434659607842-pgv4ql-1619404726698.mp4?Expires=1750825476&Signature=tDobs7wXRUDdGD5HnQJ4iBLszOLKvpqGIAljAj0GSxe777xQkMRr24C44myjXSXDbA~aYAMNUYtxsNRkZSv1Zmos8F4TonMvgeAX-HezdvCypUjd8oBmGFAt3ySj-d6n1oy66Gkff2SOhzwwkCDdDREVo7AItgvsEj5SCt9Jzey0dv8Cc5OpMEhf46-h4y5tHPauCgZSrahWXoOmh1EfVFz0Spxa4xI-ERyEdhnA7s-Z-tflDfup7IBX3rQIr82ZTqDem7iQxYlxm9KcTo-QEiiNd4PRTZkjb2ovSiTOKrzR7nOTimQN8ogf~MIW9VznNbvzhyij6IOwTT-qMCCBAw__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "The Power of the Dog",
+    "language": "English",
+    "description": "Charismatic rancher Phil Burbank inspires fear and awe in those around him. When his brother brings home a new wife and her son, Phil torments them until he finds himself exposed to the possibility of love.",
+    "duration": "2h 6m",
+    "poster_url": "https://www.imdb.com/title/tt10293406/mediaviewer/rm2236541697/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi3278422809/1434659607842-pgv4ql-1645819238210.mp4?Expires=1750824821&Signature=q2CNMVoOXcBOOc7pBNPxDTc52RxyYa4MBXrjRw0m9MU1U0UtTCIjDFfC2Nm9cjmMcZQO2WhJdSzIoOT~eZppqSEg5hwO4EEjOs08OABNgl9NvVi~gsnBz3ZiUhHKDo-3iAy2-OQ-cxOP9lTBspwyHpYUFHV2sNVTtvnwFUdfkhu3VERZksj05OiEkAp4ciBdSfnnyxEoEbfgl1ViIb6UhbarSDq0qb~S9V8Q13-vbFXwPFlT6oRfl1-vJ0Ft25AvvSr6m0KZmrxUtwVvfEzNydGBFxvK4Jk5xN3Nxnf8mWBOeQH7VnTJWNLGSCS6iefGccMV3t7exW3UP6GlCSQ2rg__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "A Quiet Place",
+    "language": "English",
+    "description": "The Abbott family now face the terrors of the outside world. Forced to venture into the unknown, they realize the creatures that hunt by sound are not the only threats lurking beyond the sand path.",
+    "duration": "1h 37m",
+    "poster_url": "https://www.imdb.com/title/tt8332922/mediaviewer/rm3613618433/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi1336655385/1434659607842-pgv4ql-1583947067667.mp4?Expires=1750825336&Signature=lfuFoh353Sfezyoaix85EezuLITFCgPLtCCn6FaDXvHNzPyHSuL-AV207eq6dGN6tcl7iDqf2ZQkliCpknsGinFCncZ-LIIIR7434JXAlWHYOuNS-RxD0NVt3OK3FHRnMT97DS6zsgXsxltD0qwjrxxPmjFYjryL6P3daPW5i4GqzIiAYyXIdwfyTJJcrO4~hR7zro1tKk0P1IONENtYYnd68hV96LFNYMlrD1DVdoTwe92g7swBCCULHPghsXj3LlL~XCQhTPTo1p0fUtFeYY7pqzj2qA0s4oZUE1Pc1K4Q7I3bYv3lXy5CXJZPINyanz9eOsWpmv6kipKcfW~5Lw__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "Loki",
+    "language": "English",
+    "description": "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.",
+    "duration": "50m",
+    "poster_url": "https://www.imdb.com/title/tt9140554/mediaviewer/rm2904670465/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi1278592793/1434659607842-pgv4ql-1698762083927.mp4?Expires=1750825440&Signature=JIzjha67iB9phnY9GfXqJbMS7QlyBZbEQS~mUL3uHf~bnxYR09N~ZGHFQu9fM2CNK32Bv0PJ2sVrorGYNvb4t3I83EctMrbzeH4HfursJPqJDueBMadwZcWEq1WvUU2ssC5w0VYgzRM~vNc95PWkauOjPz3RO0zlAgQ37CvQqh6UXqrio3NBJtsZDSS3RvGRB2OhxKwWTL0MKOfRsUOmESlJ3asMWfjMGkV4YPL5RE9OAiiPf4Dbn7vATFL99uzq4dtxeCOORuRmmjUs1ryW6kHZOZfmfzg18qDMZ-V~5T31MM10MrYrcDK27pGu9lmqsycIh4474uh7opx6TrLOzA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "CODA",
+    "language": "English",
+    "description": "When the family's fishing business is threatened, Ruby finds herself torn between pursuing her musical passion and her fear of abandoning her deaf parents.",
+    "duration": "1h 31m",
+    "poster_url": "https://www.imdb.com/title/tt10366460/mediaviewer/rm759954177/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi3832463385/1434659607842-pgv4ql-1628710497659.mp4?Expires=1750825799&Signature=uJSsch~F2MiI0UlrhphpRXtv9fwirXSJbMcQLWGxQia9Oxk~ZH8UGWzKJqizI6hHKQM6awVZ~8H4st4qshtKe2KxfCPf0lc~vOnu5b5WB86JA2bPHwYtLTEDaw7P1QSTXROYFFoFXur30jjg3ln2~GAApxySY9s8S6oEoFuwOt4A3mtZK5PrWT9hYlszuglXm4pWsgMvIeAMhuRChuRcucVx~UySxzPUiFSa-ZV0xJL4Fk380MFq-Wvgw-JiTjCyAPLo9ySVyj1kui2AtRgPnq7nsy1p2NAJOOwJPLCKjnNEOtwmLcG~bSC5DPQVsusA~TAA36Kt~~5Rm6ny9dOX4w__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "The Dark Knight",
+    "language": "English",
+    "description": "When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman, James Gordon and Harvey Dent must work together to put an end to the madness.",
+    "duration": "2h 32m",
+    "poster_url": "https://www.imdb.com/title/tt0468569/mediaviewer/rm4023877632/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi2290138905/1434659607842-pgv4ql-1569606903003.mp4?Expires=1750825736&Signature=BIFDG2eHlO6c8OQXHauaTkadf5EKnWHqL8tc86KFd6pGfqL~zL0a9DoUa176BHN7EaKVUBj0e~51rt~MGKKLhkqNS0UxXa4kGDwy8ca4~-kpxpSlP9~1qMKwd083m3GCT2ybDFddid68WEvjgiF0xXuwIeFbzl9SrTK9GJ8GrFZEEwYNCnlQB~Hw921Gg42133oB2G-Jd2FJfpmgrDdoT-aJvVwLPKy-B-LOYd5l30tgn1jowDtgsvHQTnSLHGPsG5sQmMqhFWr22L8megrrrC5uT8Uaew6GnnSkQKovleOfPIZzWqjUtUa5wRXgFF1nfbUBiUZD7DNZp1~F2R~hZA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "Pirates of the Caribbean",
+    "language": "English",
+    "description": Blacksmith Will Turner teams up with eccentric pirate "Captain" Jack Sparrow to save Elizabeth Swann, the governor's daughter and his love, from Jack's former pirate allies, who are now undead.",
+    "duration": "2h 23m",
+    "poster_url": "https://www.imdb.com/title/tt0325980/mediaviewer/rm2487103488/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi2529559321/1434659607842-pgv4ql-1564560711742.mp4?Expires=1750825367&Signature=VVTSbf2MV1KVtyTl-URPFrkKHGTtenysLpssCyI8Lgl0uT~cXZRnJq6Acp8NskBmJONwrwWbPKNPSgTCUj~tJddHZT98kV-K0nfQ3btLOQCW42MclOI~cRbk6hV-THoqijqEXOknR3OynL9yYgcCRDUd-jVwpZvQSuPAAJz8FMNrMunriFGYDtG8VBRXQHkzYppAXCqq3LSSt3dOQYzSBCo9QVl2CgHio2nNJE3VzFa2kqSKgIb3vl8IRkQFaxnkwlg5NFI5ZSAp1APz8W1zHGz0dDg2m9t3NF-yuhrb7thtPie-wLO70TvudtpjA-Wy2z5BpnVw5Hq88i5a5P4k3w__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "Inception",
+    "language": "English",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+    "duration": "2h 28m",
+    "poster_url": "https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi2959588889/1434659607842-pgv4ql-1596404706743.mp4?Expires=1750825454&Signature=exreXQxU3dK52VpAC8MnFsHlrKRNVW4NP7B4DHQ6DKwmjrXOsF9TX39Xm~F0G-ZSTaVuBbAQT-bZKXivdo-VdZbIemR6MbXXp91H8-N9OuLLVJvd5S-avjUbD~873-2O-n1Ugzj7Snzj5Qk4m6pXwvCKRFl06H~MoIErh8Oe2Y0J8FqYsmB40jYbyW62VFuUs5A2qIGi42ObZHPhUKjo8kNGEw0r7wZm19H90tXGU~lLljsbTbSxufgsgZlTxpR5hqMWY356xmupzkLNmatNryevCGWKJyIU9r9Ub5uBSB9D87kBno48Kcq4Lci9dDcSew8QbW2KfppNW9LyelpLfw__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+},
+{
+    "title": "John Wick",
+    "language": "Tamil",
+    "description": "John Wick is a former hitman grieving the loss of his true love. When his home is broken into, robbed, and his dog killed, he is forced to return to action to exact revenge.",
+    "duration": "1h 41m",
+    "poster_url": "https://www.imdb.com/title/tt2911666/mediaviewer/rm1723909376/?ref_=tt_ov_i",
+    "trailer_url": "https://imdb-video.media-imdb.com/vi1223339801/MV5BZTcwZmMxN2YtOWQ4Ni00NzcxLTkyNDYtNDFiNGY3ODk2ZjE0XkExMV5BbXA0XkFpbWRiLWV0cy10cmFuc2NvZGU@.mp4?Expires=1750825677&Signature=XVyuLftatWE1NQ5W2FlSStjspomxGDjPHbKCHXfl74kbflKl2xf7z3UkfbZ5ITcWzaSUD8cUxQAaisTo50qI09uOOPPZ3rsR65p11qof6WHWh2NT2F1CIjZ6ajG~ztzo3KRhRp4z738PzvMqpH9nJxAG427Bler3fT5IOxROAMF4dSmDBzxvsAoRIRIu6Sfcfaiu0jvkXaPRDB1RxRaF0cZ8N3h6rwUOuF-DuGcIq-mVlfb~V7wbfZB6x6JZeBe2DiYOpv~ZwRexKbFbceHXUvrfWgaSqSsPG3n00I-8Jr5-8AXrX4S2Z0NxJGjUfwjE524Y1pPZxb4uE4gD39QGcA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
+}
