@@ -12,13 +12,12 @@ mongoose.connect(uri)
 const wss = new WebSocket.Server({ port: 8000 });
 const rooms = new Map();
 
-function parseRoom(roomString) {
+function parseRoom(roomString){
     const parts = roomString.split('_');
     const screen = parseInt(parts[parts.length - 2]);
     const showTime = decodeURIComponent(parts[parts.length - 1]);
     const movie = parts.slice(0, parts.length - 3).join('_');
     const theatre = parts[parts.length - 3];
-
     return {
         movie,
         theatre,
@@ -27,12 +26,11 @@ function parseRoom(roomString) {
     };
 }
 
-
-wss.on('connection', (ws) => {
+wss.on('connection',(ws)=>{
     ws.id = uuidv4();
     ws.room = null;
     ws.send(JSON.stringify({ type: 'id', id: ws.id }));
-    ws.on('message', (message) => {
+    ws.on('message',(message)=>{
         const data = JSON.parse(message);
         if (data.type === 'join') {
             ws.room = data.room;
@@ -44,20 +42,20 @@ wss.on('connection', (ws) => {
                 screen,
                 showTime
             })
-            .then(tickets => {
+            .then(tickets=>{
                 const bookedSeats = new Set();
                 tickets.forEach(ticket => {
                     ticket.seats.forEach(seat => bookedSeats.add(seat));
                 });
-                if (!rooms.has(ws.room)) {
-                    rooms.set(ws.room, {
+                if(!rooms.has(ws.room)){
+                    rooms.set(ws.room,{
                         clients: [],
                         lockedSeats: new Map()
                     });
                 }
                 const roomData = rooms.get(ws.room);
                 roomData.clients.push(ws);
-                const lockedSeatsPayload = Array.from(roomData.lockedSeats.entries()).map(([seat, by]) => ({
+                const lockedSeatsPayload = Array.from(roomData.lockedSeats.entries()).map(([seat, by])=>({
                     seat,
                     by
                 }));
@@ -68,20 +66,21 @@ wss.on('connection', (ws) => {
                     booked: Array.from(bookedSeats)
                 }));
             })
-            .catch(err => {
+            .catch(err=>{
                 console.error('DB Error on join:', err);
             });
         }
-        if (data.type === 'lock-seat' || data.type === 'unlock-seat') {
+        if(data.type === 'lock-seat' || data.type === 'unlock-seat') {
             const roomData = rooms.get(ws.room);
-            if (!roomData) return;
-            if (data.type === 'lock-seat') {
+            if(!roomData) return;
+            if(data.type === 'lock-seat'){
                 roomData.lockedSeats.set(data.seat, ws.id);
-            } else {
+            }
+            else{
                 roomData.lockedSeats.delete(data.seat);
             }
-            roomData.clients.forEach(client => {
-                if (client.readyState === WebSocket.OPEN) {
+            roomData.clients.forEach((client)=>{
+                if(client.readyState === WebSocket.OPEN){
                     client.send(JSON.stringify({
                         type: 'lock-seat',
                         seat: data.seat,
@@ -91,14 +90,14 @@ wss.on('connection', (ws) => {
                 }
             });
         }
-        if (data.type === 'booked') {
+        if(data.type === 'booked'){
             const roomData = rooms.get(ws.room);
-            if (!roomData) return;
-            data.seats.forEach(seat => {
+            if(!roomData) return;
+            data.seats.forEach((seat)=>{
                 roomData.lockedSeats.delete(seat);
             });
-            roomData.clients.forEach(client => {
-                if (client.readyState === WebSocket.OPEN) {
+            roomData.clients.forEach((client)=>{
+                if(client.readyState === WebSocket.OPEN){
                     client.send(JSON.stringify({
                         type: 'booked',
                         room: ws.room,
@@ -108,16 +107,15 @@ wss.on('connection', (ws) => {
             });
         }
     });
-
-    ws.on('close', () => {
-        if (ws.room && rooms.has(ws.room)) {
+    ws.on('close',()=>{
+        if(ws.room && rooms.has(ws.room)){
             const roomData = rooms.get(ws.room);
-            roomData.clients = roomData.clients.filter(client => client !== ws);
-            for (const [seat, by] of roomData.lockedSeats.entries()) {
-                if (by === ws.id) {
+            roomData.clients = roomData.clients.filter((client) => client !== ws);
+            for(const [seat, by] of roomData.lockedSeats.entries()) {
+                if(by === ws.id){
                     roomData.lockedSeats.delete(seat);
-                    roomData.clients.forEach(client => {
-                        if (client.readyState === WebSocket.OPEN) {
+                    roomData.clients.forEach((client)=>{
+                        if (client.readyState === WebSocket.OPEN){
                             client.send(JSON.stringify({
                                 type: 'lock-seat',
                                 seat,

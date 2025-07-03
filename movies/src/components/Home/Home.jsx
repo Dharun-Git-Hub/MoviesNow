@@ -20,6 +20,7 @@ const Home = ({ws}) => {
     const [expanded,setExpanded] = useState(false)
     const [userDetails,setUserDetails] = useState({})
     const [unread,setUnread] = useState(0)
+    const role = sessionStorage.getItem('role') || useSelector(state => state.user.role)
     const count = useSelector(state=>state.client.count)
     const navigate = useNavigate()
 
@@ -47,6 +48,12 @@ const Home = ({ws}) => {
         }
         doFirst()
     },[])
+
+    useEffect(()=>{
+        if(role === 'Admin'){
+            navigate('/dashboard')
+        }
+    },[role])
 
     useEffect(()=>{
         if(!sessionStorage.getItem('token')){

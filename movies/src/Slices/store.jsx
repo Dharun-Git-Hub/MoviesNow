@@ -9,6 +9,8 @@ import DashSlice from "./DashSlice"
 import TicketSlice from "./TicketSlice"
 import ValidateSlice from "./ValidateSlice"
 import ClientNotify from "./ClientNotify"
+import QuerySlice from "./QuerySlice"
+import ResolveSlice from "./ResolveSlice"
 
 const store = configureStore({
     reducer: {
@@ -22,7 +24,9 @@ const store = configureStore({
         revenue: TicketSlice,
         validate: ValidateSlice,
         client: ClientNotify,
-    }
+        query: QuerySlice,
+        resolve: ResolveSlice,
+    },
 })
 
 store.subscribe((state)=>{

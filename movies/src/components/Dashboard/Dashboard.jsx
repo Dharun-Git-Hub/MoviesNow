@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { MoviesControl, TheatresControl } from '../../phase-3/Control/ControlPanel'
@@ -6,6 +6,8 @@ import { noOfTheatres } from '../../Slices/DashSlice'
 import MovieTable from '../../phase-3/Tables/MovieTable'
 import TheatreTable from '../../phase-3/Tables/TheatreTable'
 import TicketTable from '../../phase-3/Tables/TicketTable'
+import { getResolved, setPending } from '../../Slices/ResolveSlice'
+import { NotificationContext } from '../../Context/NotificationContext'
 
 const Dashboard = () => {
     const role = useSelector(state=>state.user.role)
@@ -22,11 +24,38 @@ const Dashboard = () => {
     const [theatreCasting,setTheatreCasting] = useState([])
     const [showsList,setShowsList] = useState([])
     const [unread,setUnread] = useState(0)
-    const count = useSelector(state=>state.client.count)
+    const [data,setData] = useState([])
+    const [solved,setSolved] = useState([])
+    const count = useSelector(state=>state.resolve.pending)
+    const resolved = useSelector(state=>state.resolve.resolved)
+    const {msg} = useContext(NotificationContext)
 
     useEffect(()=>{
         setUnread(count)
     },[count])
+
+    useEffect(()=>{
+        const getQueries = async () => {
+            try{
+                const response = await fetch('http://localhost:3000/getQueries')
+                const data = await response.json()
+                console.log(data)
+                setSolved(data.list.filter((el)=>el.resolved === true))
+                setData(data.list.filter((el)=>el.resolved === false))
+            }
+            catch(err){
+                console.log(err)
+                alert('Something went Wrong!')
+            }
+        }
+        getQueries()
+    },[msg])
+
+    useEffect(()=>{
+        console.log(data.length)
+        dispatch(setPending(data.length))
+        dispatch(getResolved(solved.length))
+    },[data,solved])
 
     useEffect(()=>{
         if(!sessionStorage.getItem('token')){
@@ -52,6 +81,7 @@ const Dashboard = () => {
         <div style={{backgroundColor: "#1a1a2e"}}>
             <div className='dash-topbar'>
                 <span>Dashboard</span>
+                <button className='positioning' onClick={()=>navigate('/queriesHistory')}>History</button>
             </div>
             <div className='dash-body'>
                 <div className='flip-card-dash'>
@@ -88,16 +118,18 @@ const Dashboard = () => {
                     <div className='flip-card-dash-inner'>
                         <div className='flip-card-dash-front'>
                             <span className='trend-name'>Queries</span>
-                            <span className='notify-count-dash'>{unread}</span>
+                            {unread > 0 && <span className='notify-count-dash'>{unread}</span>}
                         </div>
                         <div className='flip-card-dash-back'
+                            style={{flexDirection: "column"}}
                             onClick={()=>{
                                 setShowTickets(true);
                                 setShowMovies(false);
                                 setShowTheatres(false);
                                 navigate('/queriesAd');
                         }}>
-                            Pending: {unread > 0 && unread}
+                            <span>Pending: {unread > 0 && unread || 0}</span>
+                            <span>Resolved: {resolved}</span>
                         </div>
                     </div>
                 </div>

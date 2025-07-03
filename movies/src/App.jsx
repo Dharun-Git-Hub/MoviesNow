@@ -19,6 +19,7 @@ import Queries from './phase-3/Queries/Queries'
 import QueriesAd from './phase-3/Queries/Queries-Ad'
 import { NotificationProvider } from './Context/NotificationContext'
 import NotificationDisplay from './components/NotificationDisplay'
+import QueriesHistory from './components/QueriesHistory/QueriesHistory'
 
 const App = () => {
     return (
@@ -43,6 +44,7 @@ const App = () => {
                     <Route path="/history" element={<History/>}/>
                     <Route path='/queries' element={<Queries/>}/>
                     <Route path='/queriesAd' element={<QueriesAd/>}/>
+                    <Route path='/queriesHistory' element={<QueriesHistory/>}/>
                     <Route path="*" element={<Entry/>}/>
                 </Routes>
                 <NotificationDisplay/>

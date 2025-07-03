@@ -9,21 +9,25 @@ const wss = new WebSocket.Server({port:PORT})
 
 const fetchAllClients = () => {
     const users = Array.from(clients.values())
-    const namelist = users.map((id) => ({ id, name: namedClients.get(id) || null}))
+    const namelist = users.map((id) => ({
+        id, name: namedClients.get(id) || null
+    }))
     for(let client of clients.keys())
         client.send(JSON.stringify({type: "users_list", list: namelist}))
 }
 
-wss.on('connection', (ws) => {
+wss.on('connection',(ws)=>{
     const userId = uuid();
     ws.send(JSON.stringify({type: "your_id", id: userId}))
     clients.set(ws, userId);
-    fetchAllClients();
-    ws.on('message',(message) => {
+    fetchAllClients()
+    ws.on('message',(message)=>{
         let data;
-        try {
+        try{
             data = JSON.parse(message);
-        } catch (e) {
+        }
+        catch(err){
+            console.log(err)
             ws.send(JSON.stringify({type: "Type-Error", message: "Please give JSON Data"}))
             return;
         }
@@ -59,21 +63,36 @@ wss.on('connection', (ws) => {
                     }))
             }
         }
-        else if(data.type === 'exiting'){
-            const exitingId = data.id;
-            for(let [client, clientId] of clients.entries()){
-                if(clientId === exitingId)
-                    client.send(JSON.stringify({type: "exit-permitted"}))
+        else if(data.type === 'exit'){
+            const userId = data.id;
+            for(let [client,id] of clients.entries()){
+                if(id === userId){
+                    clients.delete(client)
+                    for(let [clientId,name] of namedClients.entries()){
+                        if(clientId === userId){
+                            namedClients.delete(clientId)
+                        }
+                    }
+                }
             }
+            console.log('User with ID',userId,' Left!')
+            fetchAllClients()
         }
         else if(data.type === 'My_Name'){
             const name = data.name;
             const userId = clients.get(ws);
             for(let [id,named] of namedClients.entries()){
-                if(name === named)
-                    ws.send(JSON.stringify({type: "Duplicate", message: "User Already Exists"}))
+                if(named === name){
+                    namedClients.delete(id)
+                    for(let [conn,clientId] of clients){
+                        if(clientId === id){
+                            clients.delete(conn)
+                        }
+                    }
+                }
             }
             namedClients.set(userId, name);
+            console.log(namedClients);
             fetchAllClients();
         }
         else

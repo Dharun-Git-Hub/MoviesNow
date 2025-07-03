@@ -28,10 +28,13 @@ const NotificationDisplay = () => {
       dispatch(clear())
       navigate('/queries')
     }
+    else if(role === 'Admin'){
+      navigate('/queriesAd')
+    }
   }
 
   return (
-    <div className="notification" onClick={handleUnread}>
+    <div className="notification" style={{cursor: "pointer"}} onClick={handleUnread}>
         <span className="notify-from">{from}</span>
         <span className="notify-msg">{msg}</span>
     </div>

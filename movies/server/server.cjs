@@ -16,6 +16,7 @@ const Ticket = require('./Schema/TicketSchema/TicketSchema.cjs')
 const Movie = require('./Schema/MovieSchema/MovieSchema.cjs')
 const Admin = require('./Schema/AdminSchema/AdminSchema.cjs')
 const User = require('./Schema/UserSchema/UserSchema.cjs')
+const Query = require('./Schema/QuerySchema/QuerySchema.cjs')
 app.use(cors())
 app.use(express.json())
 
@@ -468,6 +469,31 @@ app.post('/book',async (req,res) => {
             console.log(`New Ticket: ${newTicket}`)
             try{
                 await Ticket.insertOne(newTicket)
+                try{
+                    const transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: process.env.mailuser,
+                            pass: process.env.mailpass,
+                        }
+                    })
+                    const mailOptions = {
+                        from: 'ganeshgowri1985@gmail.com',
+                        to: exists.email,
+                        subject: '😍 Booked Successfully',
+                        text: `Hello, ${username}, You have been successfully booked ${seats.length} tickets for
+                        ${movie} at Screen ${screen}.\nPlease be on time (${details.showTime}) so that you can't miss the show.\n
+                        You have booked Seat No(s): [${seats}] and have paid Rs. ${totalPrice} on ${(new Date()).toLocaleDateString()}.\n
+                        Happy Show!...❤️`,
+                    }
+                    await transporter.sendMail(mailOptions,(err)=>{
+                        if(err)
+                            console.log(err)
+                    })
+                }
+                catch(err){
+                    console.log(err)
+                }
                 return res.json({status:"success",message:"Ticket booked Successfully!"})
             }
             catch(err){
@@ -734,6 +760,48 @@ app.post('/validateToken',async(req,res)=>{
     catch(err){
         console.log(err)
         return res.json({status:"failure", message: "Something went Wrong!"})
+    }
+})
+
+app.post('/placeQuery',async(req,res)=>{
+    const {username,query} = req.body;
+    try{
+        await Query.insertOne({username: username, query: query, resolved: false, date: new Date()})
+        return res.json({status:"success"})
+    }
+    catch(err){
+        console.log(err)
+        return res.json({status:"failure",message:"Something went Wrong!"})
+    }
+})
+
+app.get('/getQueries',async(req,res)=>{
+    try{
+        const queries = await Query.find()
+        console.log(queries)
+        return res.json({status: "success", list: queries});
+    }
+    catch(err){
+        console.log(err)
+        return res.json({status:"failure",message:"Something went Wrong!"})
+    }
+})
+
+app.patch('/setResolved',async(req,res) => {
+    const {id} = req.body;
+    console.log(id)
+    try{
+        const exists = await Query.findOne({_id:id})
+        if(!exists){
+            return res.json({status:"failure",message:"User Not Found!"})
+        }
+        const updated = await Query.updateOne({_id:id},{$set: {resolved:true, resolvedOn: new Date()}},{new:true})
+        console.log(updated)
+        return res.json({status:"success",id: id});
+    }
+    catch(err){
+        console.log(err)
+        return res.json({status:"failure",message:"Something went Wrong!"})
     }
 })
 
