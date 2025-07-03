@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { getResolved, setPending, setResolved } from '../../Slices/ResolveSlice';
+import { NotificationContext } from '../../Context/NotificationContext';
 
 const QueriesHistory = () => {
     const [data,setData] = useState([]);
     const dispatch = useDispatch()
+    const {msg} = useContext(NotificationContext)
 
     const getQueries = async () => {
         try{
@@ -21,6 +23,10 @@ const QueriesHistory = () => {
     useEffect(()=>{
         getQueries()
     },[])
+
+    useEffect(()=>{
+        getQueries()
+    },[msg])
 
     useEffect(()=>{
         dispatch(setPending(data.length))
