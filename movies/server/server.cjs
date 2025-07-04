@@ -738,6 +738,25 @@ app.get('/revenueByTheatre', async(req,res) => {
     return res.json({status:"success",result:result})
 })
 
+app.get('/revenueByUser', async(req,res) => {
+    const pipeline = [
+        {
+            $group: {
+                _id: "$username",
+                spent: { $sum: "$ticketPrice" }
+            }
+        }
+    ]
+    try{
+        const result = await Ticket.aggregate(pipeline)
+        return res.json({status: "success", list: result})
+    }
+    catch(err){
+        console.log(err)
+        return res.json({status: "failure", message: "Something Went Wrong!"})
+    }
+})
+
 app.post('/history',async(req,res)=>{
     const {username} = req.body;
     try{

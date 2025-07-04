@@ -52,6 +52,25 @@ const QueriesAd = ({Strict}) => {
 	},[]);
 
 	useEffect(()=>{
+        const doFirst = async () => {
+            try{
+                const result = await dispatch(validateToken(sessionStorage.getItem('token'))).unwrap()
+                if(result === 'Something went Wrong!'){
+                    sessionStorage.removeItem('token')
+                    alert('Session Timeout Please Login !')
+                }
+            }
+            catch(err){
+                console.log(err)
+                sessionStorage.removeItem('token')
+                alert('Session Timeout Please Login !')
+                navigate('/')
+            }
+        }
+        doFirst()
+    },[])
+
+	useEffect(()=>{
 		ws.current = new window.WebSocket('ws://localhost:8001')
 		ws.current.onopen = () =>{
 			ws.current.send(JSON.stringify({type: "My_Name", name: username}))

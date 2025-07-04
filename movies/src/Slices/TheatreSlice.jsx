@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const loadTheatres = createAsyncThunk('movies/loadTheatres', async(_,{rejectWithValue,getState})=>{
+export const loadTheatres = createAsyncThunk('movies/loadTheatres', async(_,{rejectWithValue})=>{
     try{
         const response = await fetch('http://localhost:3000/theatres');
         const data = await response.json()

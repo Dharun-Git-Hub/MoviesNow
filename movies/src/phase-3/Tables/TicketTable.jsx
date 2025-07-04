@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getMovieRevenue, getTheatreRevenue } from '../../Slices/TicketSlice'
+import UserTable from './UserTable'
 
 const TicketTable = () => {
     const dispatch = useDispatch()
@@ -20,11 +21,11 @@ const TicketTable = () => {
     },[])
 
     useEffect(()=>{
-        const result = theatres.reduce((acc,c)=>acc += c.revenue,0)
+        const result = theatres.reduce((acc,c) => acc += c.revenue,0)
         setTotal(result)
     },[theatres])
     return (
-        <div className='add-t' style={{ position: "absolute", top: "40vh", width: "100vw", minHeight: "60vh"}}>
+        <div className='add-t' style={{ position: "relative", top: "40vh", width: "100vw", minHeight: "60vh"}}>
             <span className='trend-name' style={{marginTop: "20px"}}>Tickets Overview</span>
             <div style={{display: "flex", flexDirection: "row"}}>
                 <table className='ticket-table'>
@@ -66,6 +67,7 @@ const TicketTable = () => {
                         }
                     </tbody>
                 </table>
+                <UserTable/>
             </div>
             <span className='trend-name'>Total Revenue: <span style={{color: "rgb(230, 200, 240)"}}>{total}</span></span>
         </div>

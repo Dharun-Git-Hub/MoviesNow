@@ -55,6 +55,25 @@ const Queries = ({ Strict }) => {
         };
     }, []);
 
+    useEffect(()=>{
+        const doFirst = async () => {
+            try{
+                const result = await dispatch(validateToken(sessionStorage.getItem('token'))).unwrap()
+                if(result === 'Something went Wrong!'){
+                    sessionStorage.removeItem('token')
+                    alert('Session Timeout Please Login !')
+                }
+            }
+            catch(err){
+                console.log(err)
+                sessionStorage.removeItem('token')
+                alert('Session Timeout Please Login !')
+                navigate('/')
+            }
+        }
+        doFirst()
+    },[])
+
     useEffect(() => {
         const container = document.querySelector(".messages-area");
         container.scrollTop = container.scrollHeight;

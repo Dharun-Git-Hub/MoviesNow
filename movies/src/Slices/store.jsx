@@ -29,7 +29,7 @@ const store = configureStore({
     },
 })
 
-store.subscribe((state)=>{
+store.subscribe(()=>{
     console.log(store.getState())
 })
 

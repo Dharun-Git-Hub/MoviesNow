@@ -187,6 +187,7 @@ const UpdateTheatre = ({ name: targetName, setTheatres })=>{
       {screens.length < theatre.max && (
       <button
           type="button"
+          style={{cursor: "pointer", backgroundColor: "rgba(255,255,255,0.2)", border: 'none', color: "white", borderRadius: "0.8rem", padding: "0.7rem"}}
           onClick={()=>{
             const newScreen = {
               screen_number: screens.length + 1,
@@ -244,16 +245,16 @@ const UpdateTheatre = ({ name: targetName, setTheatres })=>{
               required
             />
           ))}
-          <button type="button" onClick={()=>addShowtime(screenIndex)}>
+          <button type="button" style={{cursor: "pointer", backgroundColor: "transparent", border: 'none', color: "white"}} onClick={()=>addShowtime(screenIndex)}>
             + Add Showtime
           </button>
-          <button type="button" onClick={()=>removeShowTime(screenIndex)}>
+          <button style={{cursor: "pointer", backgroundColor: "transparent", border: 'none', color: "white"}} type="button" onClick={()=>removeShowTime(screenIndex)}>
             - Remove Showtime
           </button>
           <button
             type="button"
             onClick={() => removeScreen(screenIndex)}
-            style={{ marginTop: 10, background: "crimson", color: "white" }}
+            style={{marginTop: 10, background: "crimson", color: "white", border: "none", cursor: "pointer"}}
           >
             Remove Screen
           </button>

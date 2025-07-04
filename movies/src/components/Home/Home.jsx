@@ -10,8 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { validateToken } from '../../Slices/ValidateSlice'
 import { clear } from '../../Slices/ClientNotify'
 
-const Home = ({ws}) => {
-    const username = useSelector(state => state.user.username)
+const Home = () => {
     const dispatch = useDispatch()
     const [movies, setMovies] = useState([])
     const [theatres, setTheatres] = useState([])
@@ -20,7 +19,7 @@ const Home = ({ws}) => {
     const [expanded,setExpanded] = useState(false)
     const [userDetails,setUserDetails] = useState({})
     const [unread,setUnread] = useState(0)
-    const role = sessionStorage.getItem('role') || useSelector(state => state.user.role)
+    const role = sessionStorage.getItem('role')
     const count = useSelector(state=>state.client.count)
     const navigate = useNavigate()
 

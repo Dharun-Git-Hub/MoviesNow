@@ -31,7 +31,7 @@ export const QuerySlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(placeQuery.fulfilled, (state,action) => {
+            .addCase(placeQuery.fulfilled, (state) => {
                 state.error = null;
             })
             .addCase(placeQuery.rejected, (state,action) => {

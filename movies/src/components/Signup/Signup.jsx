@@ -1,10 +1,9 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import SignupEmail from "../Email/SignupEmail"
 import OTP from "../OTP/OTP"
 
 const Signup = () => {
-    const dispatch = useDispatch()
     const [validate,setValidate] = useState(false)
     const [methods,setMethods] = useState('signup')
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useDispatch } from 'react-redux';
 import { getResolved, setPending, setResolved } from '../../Slices/ResolveSlice';
 import { NotificationContext } from '../../Context/NotificationContext';
@@ -20,6 +20,7 @@ const QueriesHistory = () => {
             alert('Something went Wrong!')
         }
     }
+
     useEffect(()=>{
         getQueries()
     },[])
@@ -33,7 +34,7 @@ const QueriesHistory = () => {
     },[data])
 
     const handleResolve = async (details) => {
-        const {_id,username,query,resolved} = details;
+        const {_id} = details;
         const opt = confirm('Are you sure? You Resolved that?')
         if(!opt){
             return;

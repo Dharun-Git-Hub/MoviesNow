@@ -37,6 +37,7 @@ const History = () => {
                 <table className='ticket-table' style={{width: "100%"}}>
                     <thead>
                         <th>Movie</th>
+                        <th>Screen</th>
                         <th>Theatre</th>
                         <th>Seats</th>
                         <th>Base</th>
@@ -49,6 +50,7 @@ const History = () => {
                             tickets.map((ticket,index)=>(
                                 <tr key={index}>
                                     <td>{ticket.movie}</td>
+                                    <td>{ticket.screen}</td>
                                     <td>{ticket.theatre}</td>
                                     <td>{ticket.no}</td>
                                     <td>{ticket.ticketPrice}</td>
