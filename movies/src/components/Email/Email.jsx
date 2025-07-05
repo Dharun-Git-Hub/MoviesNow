@@ -19,7 +19,7 @@ const Email = ({setValidate}) => {
         e.preventDefault()
         if(email.trim() != '' && password.trim() != ''){
             try{
-                const response = await fetch('http://localhost:3000/validateEmail',{
+                const response = await fetch('http://localhost:3000/users/validateEmail',{
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({email: email, password: password})

@@ -27,7 +27,7 @@ const SignupEmail = ({setValidate}) => {
                 formData.append('mobile',mobile)
                 formData.append('image',pic)
                 console.log(formData)
-                const response = await fetch('http://localhost:3000/signupEmail',{
+                const response = await fetch('http://localhost:3000/users/signupEmail',{
                     method: 'POST',
                     body: formData,
                 })

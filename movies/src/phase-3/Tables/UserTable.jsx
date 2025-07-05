@@ -6,7 +6,7 @@ const UserTable = () => {
     useEffect(()=>{
         const doFirst = async () => {
             try{
-                const response = await fetch('http://localhost:3000/revenueByUser');
+                const response = await fetch('http://localhost:3000/tickets/revenueByUser');
                 const data = await response.json()
                 if(data.status === 'success'){
                     setUsersList(data.list)

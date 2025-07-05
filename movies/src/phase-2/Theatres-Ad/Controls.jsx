@@ -29,7 +29,7 @@ const ControlsT = () => {
                 const exist = theatres.find((el)=>el.name === theatre)
                 if(exist){
                     try{
-                        const response = await fetch('http://localhost:3000/removeTheatre',{
+                        const response = await fetch('http://localhost:3000/theatres/remove',{
                             method: 'POST',
                             headers: {'Content-Type': 'application/json'},
                             body: JSON.stringify({name: theatre}),

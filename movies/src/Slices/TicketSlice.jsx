@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getMovieRevenue = createAsyncThunk('revenue/getMovieRevenue',async(_,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/revenueByMovie')
+        const response = await fetch('http://localhost:3000/movies/revenue')
         const data = await response.json()
         console.log(data)
         if(data.status === 'success'){
@@ -20,7 +20,7 @@ export const getMovieRevenue = createAsyncThunk('revenue/getMovieRevenue',async(
 
 export const getTheatreRevenue = createAsyncThunk('revenue/getTheatreRevenue',async(_,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/revenueByTheatre')
+        const response = await fetch('http://localhost:3000/theatres/revenue')
         const data = await response.json()
         console.log(data)
         if(data.status === 'success'){

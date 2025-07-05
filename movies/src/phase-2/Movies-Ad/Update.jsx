@@ -25,7 +25,7 @@ const Update = () => {
         e.preventDefault();
         console.log("Movie Object:", movie);
         try{
-            const response = await fetch('http://localhost:3000/updateMovie',{
+            const response = await fetch('http://localhost:3000/movies/update',{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({movieDetails: movie})

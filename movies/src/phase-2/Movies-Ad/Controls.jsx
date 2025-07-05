@@ -62,7 +62,7 @@ const Controls = () => {
                     const opt = confirm('Are you sure to Delete Movie: ',movie,' ?')
                     if(opt){
                         try{
-                            const response = await fetch('http://localhost:3000/removeMovie',{
+                            const response = await fetch('http://localhost:3000/movies/remove',{
                                 method: 'POST',
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({movieDetails: movie})

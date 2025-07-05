@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { bookMyTicket } from '../../Slices/BookSlice';
 
 const Book = () => {
     const location = useLocation();
@@ -16,6 +18,9 @@ const Book = () => {
     const seatsPerGroup = capacity / 2;
     const seatsPerRow = 10;
     const rowsPerGroup = Math.ceil(seatsPerGroup / seatsPerRow);
+    const [preview,setPreview] = useState(false)
+    const [details,setDetials] = useState({})
+    const [status,setStatus] = useState(false)
 
     useEffect(()=>{
         if(!sessionStorage.getItem('token')){
@@ -72,11 +77,23 @@ const Book = () => {
             }
         };
 
-
         return () => {
             ws.current.close();
         };
     }, [room]);
+
+    useEffect(()=>{
+        if(status){
+            console.log(details.mySeats)
+            if(ws.current.readyState === WebSocket.OPEN){
+                ws.current.send(JSON.stringify({
+                    type: 'booked',
+                    room,
+                    seats: details.seats,
+                }));
+            }
+        }
+    },[status])
 
     const handleSeatClick = (seatNumber) => {
         const lockedBy = lockedSeats.get(seatNumber);
@@ -134,30 +151,67 @@ const Book = () => {
             .filter(([seat, by]) => by === myId.current)
             .map(([seat]) => seat);
 
-        if (mySeats.length <= 0) {
+        if(mySeats.length <= 0){
             alert('Please select at least one seat!')
             return;
         }
-
-        if (ws.current.readyState === WebSocket.OPEN) {
-            ws.current.send(JSON.stringify({
-                type: 'booked',
-                room,
-                seats: mySeats
-            }));
-        }
-
         const details = {
             ...ticket,
             showTime: selectedTime,
             seats: mySeats,
             totalPrice: mySeats.length * ticket.price,
         };
-        navigate('/preview',{state: details})
+        setDetials(details)
+        setPreview(true)
     };
+
+    const Preview = ({details,setStatus}) => {
+        const dispatch = useDispatch()
+        console.log(details)
+
+        const handleBooking = async () => {
+            const response = await dispatch(bookMyTicket(details)).unwrap()
+            if (response.status === "Ticket booked Successfully!") {
+                alert(response.status);
+                setStatus(true)
+                setPreview(false);
+            } else {
+                alert("Booking failed! Refresh and try again.");
+            }
+        }
+
+        return (
+            <div className='prev-cont'>
+                <span className='trend-name'>Ticket Confirmation</span>
+                <div className='prev-ticket'>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Name: </span> {details.username}</span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Theatre: </span> {details.theatre}</span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Movie: </span> {details.movie}</span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Screen: </span> {details.screen}</span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Time: </span> {new Date(details.showTime).toLocaleTimeString()}</span>
+                    </div>
+                    <div style={{width: "2px", height: "80%", backgroundColor: "grey"}}></div>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Date: </span> {new Date(details.showTime).toLocaleDateString()}</span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Seat No(s): </span><span className='trend-lang' style={{color: "blue"}}>{details.seats.map((seat,index)=>(<p key={index}>{seat},</p>))}</span></span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>No. of Seats: </span> {details.seats.length}</span>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Price Details: </span>{details.seats.length} x {details.price} = {details.totalPrice}</span>
+                        <hr/><hr/>
+                        <span><span className='trend-desc' style={{color: "black", fontSize: "1.1rem", marginRight: "30px"}}>Total Amount Payable: </span><span style={{color: "green", fontSize: "1.3rem"}}><b>{details.totalPrice}</b></span></span>
+                    </div>
+                    
+                </div>
+                <button className='book-butt' onClick={handleBooking}>Confirm</button>
+            </div>
+        )
+    }
 
     return (
         <div className="seat-container">
+            {
+                !preview?
+            <div>
             {!selectedTime?<span className='trend-name'>Available Screen Timings at {theatre} ({movie})</span>
             :<span className='trend-name'>Screen No. {screen} - {movie}</span>}
             <div style={{display: "flex", flexDirection:"row", gap: "30px"}}>
@@ -179,6 +233,10 @@ const Book = () => {
             <hr style={{color: "black"}}/>
             <span style={{position: "absolute", bottom: "2px", left: "48vw", fontSize: "1.8rem"}}>Screen Area</span>
             {selectedTime && <button className='book-button' onClick={bookTickets}>Book Tickets</button>}
+            </div>
+            :
+            <Preview details={details} setStatus={setStatus}/>
+        }
         </div>
     );
 };

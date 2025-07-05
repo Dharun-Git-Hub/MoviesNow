@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const validateToken = createAsyncThunk('validate/validateToken',async(token,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/validateToken',{
+        const response = await fetch('http://localhost:3000/users/validateToken',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({token:token}),

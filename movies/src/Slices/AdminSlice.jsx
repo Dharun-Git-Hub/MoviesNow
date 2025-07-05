@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const adminLogin = createAsyncThunk('admin/adminLogin', async(credentials,{rejectWithValue}) => {
     const {email,password} = credentials;
     try{
-        const response = await fetch('http://localhost:3000/adminLogin',{
+        const response = await fetch('http://localhost:3000/admin/adminLogin',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({email: email, password: password})

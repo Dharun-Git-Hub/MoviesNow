@@ -14,7 +14,6 @@ import UpdateT from './phase-2/Theatres-Ad/Update'
 import Book from './phase-3/Book/Book'
 import Profile from './phase-3/Profile/Profile'
 import History from './phase-3/History/History'
-import Preview from './phase-3/Book/Preview'
 import Queries from './phase-3/Queries/Queries'
 import QueriesAd from './phase-3/Queries/Queries-Ad'
 import { NotificationProvider } from './Context/NotificationContext'
@@ -39,7 +38,6 @@ const App = () => {
                     <Route path="/controls-theatre" element={<ControlsT/>}/>
                     <Route path='/Update-Theatre' element={<UpdateT/>}/>
                     <Route path='/booking' element={<Book/>}/>
-                    <Route path='/preview' element={<Preview/>}/>
                     <Route path="/editProfile" element={<Profile/>}/>
                     <Route path="/history" element={<History/>}/>
                     <Route path='/queries' element={<Queries/>}/>

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const noOfTheatres = createAsyncThunk('dash/noOfTheatres',async(_,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/noOfTheatres')
+        const response = await fetch('http://localhost:3000/theatres/noOfTheatres')
         const data = await response.json()
         console.log(data)
         if(data.status === 'success'){

@@ -37,7 +37,7 @@ const Profile = () => {
             userDetails.append('email',email)
             userDetails.append('mobile',mobile)
             userDetails.append('image',pic)
-            const response = await fetch('http://localhost:3000/updateProfile',{
+            const response = await fetch('http://localhost:3000/users/updateProfile',{
                 method: 'POST',
                 body: userDetails,
             })

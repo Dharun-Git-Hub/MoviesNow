@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getUserDetails = createAsyncThunk('user/getUserDetails',async(username,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/getUserDetails',{
+        const response = await fetch('http://localhost:3000/users/getUserDetails',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({username: username}),

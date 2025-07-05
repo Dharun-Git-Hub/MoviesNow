@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { validateToken } from "../../Slices/ValidateSlice";
 import './Queries.css'
@@ -8,6 +8,9 @@ import { increment } from "../../Slices/ClientNotify";
 import { placeQuery } from "../../Slices/QuerySlice";
 
 const QueriesAd = ({Strict}) => {
+	const location = useLocation()
+	const available = location.state || null
+	console.log(available)
 	const [myId, setMyId] = useState(null);
 	const [userList, setUserList] = useState([]);
 	const [publicMode, setPublicMode] = useState(false);
@@ -24,6 +27,16 @@ const QueriesAd = ({Strict}) => {
 	const loadedMessages = useRef(false);
 	const isMounted = useRef(false)
 	const {notify} = useContext(NotificationContext)
+
+	useEffect(()=>{
+		if(available){
+			console.log(available.name)
+			setTimeout(()=>{
+				setSelectedUser(available.name)
+			},100)
+			setPublicMode(false); setTimeout(()=>{inputRef.current?.focus();},200)
+		}
+	},[])
 
 	useEffect(()=>{
 		if(!loadedMessages.current){

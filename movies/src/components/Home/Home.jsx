@@ -22,7 +22,6 @@ const Home = () => {
     const role = sessionStorage.getItem('role')
     const count = useSelector(state=>state.client.count)
     const navigate = useNavigate()
-
     const trendRefs = useRef([])
 
     useEffect(()=>{

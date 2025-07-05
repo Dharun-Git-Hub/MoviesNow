@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const bookMyTicket = createAsyncThunk('book/bookMyTicket',async(details,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/book',{
+        const response = await fetch('http://localhost:3000/tickets/book',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(details)

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const placeQuery = createAsyncThunk('query/placeQuery',async(msg,{rejectWithValue}) => {
     try{
-        const response = await fetch('http://localhost:3000/placeQuery',{
+        const response = await fetch('http://localhost:3000/queries/place',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(msg),

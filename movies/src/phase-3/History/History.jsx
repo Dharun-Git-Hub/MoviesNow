@@ -5,7 +5,7 @@ const History = () => {
     useEffect(()=>{
         const doFirst = async () => {
             try{
-                const response = await fetch('http://localhost:3000/history',{
+                const response = await fetch('http://localhost:3000/tickets/history',{
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({username: `${sessionStorage.getItem('username')}`})

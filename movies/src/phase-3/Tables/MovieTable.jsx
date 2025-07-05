@@ -6,7 +6,7 @@ const MovieTable = ({movies}) => {
     useEffect(()=>{
         const doFirst = async () => {
             try{
-                const response = await fetch('http://localhost:3000/whereAreCasting');
+                const response = await fetch('http://localhost:3000/movies/whereAreCasting');
                 const data = await response.json()
                 if(data.status === 'success'){
                     setCastingList(data.data)

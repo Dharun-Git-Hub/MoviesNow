@@ -37,7 +37,7 @@ const Dashboard = () => {
     useEffect(()=>{
         const getQueries = async () => {
             try{
-                const response = await fetch('http://localhost:3000/getQueries')
+                const response = await fetch('http://localhost:3000/queries/getQueries')
                 const data = await response.json()
                 console.log(data)
                 setSolved(data.list.filter((el)=>el.resolved === true))
@@ -67,7 +67,6 @@ const Dashboard = () => {
     useEffect(()=>{
         const doFirst = async () => {
             const response = await dispatch(noOfTheatres()).unwrap()
-            console.log(response)
             setTheatresCount(response.data.theatresCount)
             setMoviesCount(response.data.moviesCount)
             setTicketsCount(response.data.ticketsCount)

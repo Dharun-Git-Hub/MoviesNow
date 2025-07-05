@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"node server/server.cjs\" \"node server/chat.cjs\" \"node server/socket.cjs\"",
+    "dev": "concurrently \"vite\" \"node server/main.cjs\" \"node server/chat.cjs\" \"node server/socket.cjs\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

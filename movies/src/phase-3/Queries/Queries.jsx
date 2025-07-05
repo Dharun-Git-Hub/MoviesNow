@@ -26,12 +26,13 @@ const Queries = ({ Strict }) => {
     const count = useSelector((state) => state.client.count);
 
     useEffect(() => {
-        if (!loadedMessages.current) {
+        if(!loadedMessages.current){
             const storedMessages = sessionStorage.getItem("chatMessages");
-            if (storedMessages) {
-                try {
+            if(storedMessages){
+                try{
                     setMessages(JSON.parse(storedMessages));
-                } catch (err) {
+                }
+                catch(err){
                     console.error("Invalid messages in sessionStorage");
                 }
             }

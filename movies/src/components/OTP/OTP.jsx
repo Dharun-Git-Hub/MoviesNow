@@ -14,7 +14,7 @@ const OTP = ({setValidate,methods}) => {
         e.preventDefault()
         if(otp.trim() != ''){
             try{
-                const response = await fetch('http://localhost:3000/verifyOTP',{
+                const response = await fetch('http://localhost:3000/users/verifyOTP',{
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({otp: otp, email: email, methods: methods})

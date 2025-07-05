@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const setResolved = createAsyncThunk('resolve/setResolved',async(_id,{rejectWithValue})=>{
     try{
-        const response = await fetch('http://localhost:3000/setResolved',{
+        const response = await fetch('http://localhost:3000/queries/setResolved',{
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({id: _id})

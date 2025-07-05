@@ -44,7 +44,7 @@ const Add = () => {
         e.preventDefault();
         console.log("Movie Object:", movie);
         try{
-            const response = await fetch('http://localhost:3000/addMovie',{
+            const response = await fetch('http://localhost:3000/movies/add',{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({movieDetails: movie, theatres: spots})

@@ -2,15 +2,17 @@ import { useState, useEffect, useContext } from 'react'
 import { useDispatch } from 'react-redux';
 import { getResolved, setPending, setResolved } from '../../Slices/ResolveSlice';
 import { NotificationContext } from '../../Context/NotificationContext';
+import { useNavigate } from 'react-router-dom';
 
 const QueriesHistory = () => {
     const [data,setData] = useState([]);
     const dispatch = useDispatch()
     const {msg} = useContext(NotificationContext)
+    const navigate = useNavigate()
 
     const getQueries = async () => {
         try{
-            const response = await fetch('http://localhost:3000/getQueries')
+            const response = await fetch('http://localhost:3000/queries/getQueries')
             const data = await response.json()
             console.log(data)
             setData(data.list)
@@ -73,7 +75,7 @@ const QueriesHistory = () => {
                                 <td>{new Date(el.date).toLocaleDateString()}</td>
                                 <td>{el.resolved ? 'Yes' : 'No'}</td>
                                 <td><button className='act' disabled={el.resolved} onClick={()=>handleResolve(el)}>{!el.resolved && 'Resolved ?' || 'Solved'}</button></td>
-                                <td>{el.resolved ? new Date(el.resolvedOn).toLocaleDateString() : 'Pending'}</td>
+                                <td onClick={()=>navigate('/queriesAd',{state: {name: el.username}})}>{el.resolved ? new Date(el.resolvedOn).toLocaleDateString() : 'Pending'}</td>
                             </tr>
                         ))
                     }
