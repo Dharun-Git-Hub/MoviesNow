@@ -10,7 +10,7 @@ app.use(express.json())
 const upload = multer({dest: 'upload/'})
 
 app.post('/uploadToCloud',upload.single('image'),async(req,res)=>{
-    cloudinary.config({ 
+    cloudinary.config({
         cloud_name: process.env.cloudname, 
         api_key: process.env.apikey, 
         api_secret: process.env.apisecret,

@@ -1,5 +1,6 @@
 const WebSocket = require('ws')
 const { v4: uuid } = require('uuid')
+const fetchAllClients = require('./HelperFunctions/fetchAllHelper.cjs')
 const PORT = 8001
 
 const clients = new Map() 
@@ -7,20 +8,11 @@ const namedClients = new Map()
 
 const wss = new WebSocket.Server({port:PORT})
 
-const fetchAllClients = () => {
-    const users = Array.from(clients.values())
-    const namelist = users.map((id) => ({
-        id, name: namedClients.get(id) || null
-    }))
-    for(let client of clients.keys())
-        client.send(JSON.stringify({type: "users_list", list: namelist}))
-}
-
 wss.on('connection',(ws)=>{
     const userId = uuid();
     ws.send(JSON.stringify({type: "your_id", id: userId}))
     clients.set(ws, userId);
-    fetchAllClients()
+    fetchAllClients(clients,namedClients)
     ws.on('message',(message)=>{
         let data;
         try{
@@ -76,7 +68,7 @@ wss.on('connection',(ws)=>{
                 }
             }
             console.log('User with ID',userId,' Left!')
-            fetchAllClients()
+            fetchAllClients(clients,namedClients)
         }
         else if(data.type === 'My_Name'){
             const name = data.name;
@@ -93,7 +85,7 @@ wss.on('connection',(ws)=>{
             }
             namedClients.set(userId, name);
             console.log(namedClients);
-            fetchAllClients();
+            fetchAllClients(clients,namedClients);
         }
         else
             console.log(`Unknown Message Type: ${data.type}`)
@@ -102,8 +94,10 @@ wss.on('connection',(ws)=>{
         const userId = clients.get(ws);
         clients.delete(ws)
         namedClients.delete(userId)
-        fetchAllClients()
+        fetchAllClients(clients,namedClients)
     })
 })
 
 console.log(`WebSocket server Running on ws://localhost:${PORT}`);
+
+module.exports = {clients,namedClients}

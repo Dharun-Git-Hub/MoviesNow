@@ -2,6 +2,7 @@ const WebSocket = require('ws');
 const { v4: uuidv4 } = require('uuid');
 const mongoose = require('mongoose')
 const Ticket = require('./Schema/TicketSchema/TicketSchema.cjs')
+const parseRoom = require('./HelperFunctions/parseRoomHelper.cjs')
 require('dotenv').config()
 const uri = process.env.uri;
 
@@ -12,24 +13,10 @@ mongoose.connect(uri)
 const wss = new WebSocket.Server({ port: 8000 });
 const rooms = new Map();
 
-function parseRoom(roomString){
-    const parts = roomString.split('_');
-    const screen = parseInt(parts[parts.length - 2]);
-    const showTime = decodeURIComponent(parts[parts.length - 1]);
-    const movie = parts.slice(0, parts.length - 3).join('_');
-    const theatre = parts[parts.length - 3];
-    return {
-        movie,
-        theatre,
-        screen,
-        showTime: new Date(showTime)
-    };
-}
-
 wss.on('connection',(ws)=>{
     ws.id = uuidv4();
     ws.room = null;
-    ws.send(JSON.stringify({ type: 'id', id: ws.id }));
+    ws.send(JSON.stringify({type: 'id', id: ws.id}));
     ws.on('message',(message)=>{
         const data = JSON.parse(message);
         if (data.type === 'join') {
@@ -70,7 +57,7 @@ wss.on('connection',(ws)=>{
                 console.error('DB Error on join:', err);
             });
         }
-        if(data.type === 'lock-seat' || data.type === 'unlock-seat') {
+        if(data.type==='lock-seat' || data.type==='unlock-seat'){
             const roomData = rooms.get(ws.room);
             if(!roomData) return;
             if(data.type === 'lock-seat'){
@@ -90,7 +77,7 @@ wss.on('connection',(ws)=>{
                 }
             });
         }
-        if(data.type === 'booked'){
+        if(data.type==='booked'){
             const roomData = rooms.get(ws.room);
             if(!roomData) return;
             data.seats.forEach((seat)=>{
@@ -111,11 +98,11 @@ wss.on('connection',(ws)=>{
         if(ws.room && rooms.has(ws.room)){
             const roomData = rooms.get(ws.room);
             roomData.clients = roomData.clients.filter((client) => client !== ws);
-            for(const [seat, by] of roomData.lockedSeats.entries()) {
+            for(const [seat, by] of roomData.lockedSeats.entries()){
                 if(by === ws.id){
                     roomData.lockedSeats.delete(seat);
                     roomData.clients.forEach((client)=>{
-                        if (client.readyState === WebSocket.OPEN){
+                        if(client.readyState === WebSocket.OPEN){
                             client.send(JSON.stringify({
                                 type: 'lock-seat',
                                 seat,

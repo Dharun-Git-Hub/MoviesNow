@@ -332,11 +332,13 @@ app.post('/removeMovie',async(req,res)=>{
         await Movie.deleteOne({title: title})
         const updated = await Theatre.updateMany(
             {},
-            { $pull: {
-                screens: {
-                    "currently_showing.movie_name": title,
-                },
-            }}
+            {
+                $pull: {
+                    screens: {
+                        "currently_showing.movie_name": title,
+                    },
+                }
+            }
         )
         console.log(updated)
         return res.json({status: "success"})
@@ -354,46 +356,46 @@ app.put('/updateTheatre', async (req, res) => {
 
     const { _id, name, screens, max } = theatreDetails;
 
-    if (!_id || !ObjectId.isValid(_id)) {
+    if(!_id || !ObjectId.isValid(_id)){
     return res.json({ status: "failure", message: "Invalid or missing Theatre ID!" });
     }
 
-    if (screens.length > max) {
+    if(screens.length > max){
     return res.json({
         status: "failure",
         message: "Number of screens exceeds the maximum allowed."
     });
     }
 
-    try {
-    const exists = await Theatre.exists({ _id });
-    if (!exists) {
-        return res.json({ status: "failure", message: "Theatre Not Found!" });
+    try{
+        const exists = await Theatre.exists({ _id });
+        if(!exists){
+            return res.json({ status: "failure", message: "Theatre Not Found!" });
+        }
+
+        const releasedMovies = await Movie.distinct("title");
+        const invalidMovie = screens.find(
+            screen => !releasedMovies.includes(screen.currently_showing.movie_name)
+        );
+        if(invalidMovie){
+            return res.json({
+            status: "failure",
+            message: `Movie "${invalidMovie.currently_showing.movie_name}" is not released yet!`
+            });
+        }
+
+        const updated = await Theatre.findByIdAndUpdate(
+            _id,
+            theatreDetails,
+            { new: true }
+        );
+
+        console.log("Updated:", updated);
+        return res.json({ status: "success", message: "Theatre Updated" });
     }
-
-    const releasedMovies = await Movie.distinct("title");
-    const invalidMovie = screens.find(
-        screen => !releasedMovies.includes(screen.currently_showing.movie_name)
-    );
-    if (invalidMovie) {
-        return res.json({
-        status: "failure",
-        message: `Movie "${invalidMovie.currently_showing.movie_name}" is not released yet!`
-        });
-    }
-
-    const updated = await Theatre.findByIdAndUpdate(
-        _id,
-        theatreDetails,
-        { new: true }
-    );
-
-    console.log("Updated:", updated);
-    return res.json({ status: "success", message: "Theatre Updated" });
-
-    } catch (err) {
-    console.error(err);
-    return res.json({ status: "failure", message: err.message });
+    catch(err){
+        console.error(err);
+        return res.json({ status: "failure", message: err.message });
     }
 });
 
@@ -481,9 +483,9 @@ app.post('/book',async (req,res) => {
                         from: 'ganeshgowri1985@gmail.com',
                         to: exists.email,
                         subject: '😍 Booked Successfully',
-                        text: `Hello, ${username}, You have been successfully booked ${seats.length} tickets for
-                        ${movie} at Screen ${screen}.\nPlease be on time (${details.showTime}) so that you can't miss the show.\n
-                        You have booked Seat No(s): [${seats}] and have paid Rs. ${totalPrice} on ${(new Date()).toLocaleDateString()}.\n
+                        html: `Hello, ${username}, You have been successfully booked ${seats.length} tickets for
+                        ${movie} at Screen ${screen}.<br/>Please be on time (${details.showTime}) so that you can't miss the show.<br/>
+                        You have booked Seat No(s): [ ${seats} ] and have paid <h2>Rs. ${totalPrice}</h2> on ${(new Date().toLocaleDateString())}.<br/>
                         Happy Show!...❤️`,
                     }
                     await transporter.sendMail(mailOptions,(err)=>{
@@ -773,7 +775,6 @@ app.post('/validateToken',async(req,res)=>{
     const {token} = req.body;
     try{
         const decoded = jwt.verify(token,jwtsecret);
-        console.log(decoded)
         return res.json({status: "success",details: {...decoded,token: token}})
     }
     catch(err){
@@ -797,7 +798,6 @@ app.post('/placeQuery',async(req,res)=>{
 app.get('/getQueries',async(req,res)=>{
     try{
         const queries = await Query.find()
-        console.log(queries)
         return res.json({status: "success", list: queries});
     }
     catch(err){
@@ -808,14 +808,12 @@ app.get('/getQueries',async(req,res)=>{
 
 app.patch('/setResolved',async(req,res) => {
     const {id} = req.body;
-    console.log(id)
     try{
         const exists = await Query.findOne({_id:id})
         if(!exists){
             return res.json({status:"failure",message:"User Not Found!"})
         }
-        const updated = await Query.updateOne({_id:id},{$set: {resolved:true, resolvedOn: new Date()}},{new:true})
-        console.log(updated)
+        const updated = await Query.updateOne({_id:id},{$set: {resolved: true, resolvedOn: new Date()}},{new:true})
         return res.json({status:"success",id: id});
     }
     catch(err){
