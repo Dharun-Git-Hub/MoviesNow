@@ -2,7 +2,7 @@
 
 # MoviesNow
 
-  ### An Online Movies Booking Platform can have an Admin Panel too. Using this application, an Admin can create, release Movies to created Theatres.
+  ### An Online Movies Booking Platform has an Admin Panel too. Using this application, an Admin can create, release Movies to created Theatres.
   
   ### It also has a Real-Time Seat Booking Slots which will be useful for the Real-World Scenarios like, Real-Time Locking and Booked seats update features using Real-Time WebSocket connections.
 
