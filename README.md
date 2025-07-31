@@ -1,3 +1,5 @@
+<img width="1910" height="983" alt="Screenshot 2025-07-04 151813" src="https://github.com/user-attachments/assets/590cfa6b-a82a-4e72-9acf-4b54d5023c07" />
+
 # MoviesNow
 
   ### An Online Movies Booking Platform can have an Admin Panel too. Using this application, an Admin can create, release Movies to created Theatres.
