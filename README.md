@@ -28,4 +28,4 @@
 
   ### Now, it has Offline storage of Screenshots on both Client and Admin side. After some updates, it will be moved to a Cloudinary Cloud Storage for Better Scalability and Better User Experience.
 
- That's all about it for now!
+ That's all about it for now
