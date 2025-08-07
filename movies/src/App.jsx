@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Entry from './components/Entry/Entry'
 import Login from './components/Login/Login'
-import Signup from './components/Signup/SIgnup'
+import Signup from './components/Signup/Signup'
 import Home from './components/Home/Home'
 import Dashboard from './components/Dashboard/Dashboard'
 import Movie from './components/Movie/Movie'
